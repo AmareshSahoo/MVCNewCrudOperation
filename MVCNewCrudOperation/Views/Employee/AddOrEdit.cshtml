@@ -1,0 +1,50 @@
+﻿@model MVCNewCrudOperation.Models.Employee
+@{
+    Layout = null;
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+@using (Html.BeginForm("AddOrEdit", "Employee", FormMethod.Post, new {onsubmit = "return SubmitForm(this)"}))
+{
+    @Html.HiddenFor(x => x.EmployeeID)
+    <div class="form-group">
+        @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+        @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class= "form-control"} })
+        @Html.ValidationMessageFor(x=> x.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Position, new { @class = "control-label" })
+        @Html.EditorFor(x => x.Position, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(x => x.Position)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Office, new { @class = "control-label" })
+        @Html.EditorFor(x => x.Office, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(x => x.Office)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Age, new { @class = "control-label" })
+        @Html.TextBoxFor(x => x.Age, new { @class = "form-control" } )
+        @Html.ValidationMessageFor(x => x.Age)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Salary, new { @class = "control-label" })
+        <div class="input-group">
+            <span class="input-group-addon">$</span>
+        @Html.TextBoxFor(x => x.Salary, new {@class = "form-control" } )
+        </div>
+        @Html.ValidationMessageFor(x => x.Salary)
+    </div>
+
+    <div class="form-group">
+        <button type="submit"class="btn btn-primary"><i class="fa fa-save"></i> Submit </button>
+        <button type="reset" class="btn btn-warning"><i class="fa fa-refresh"></i> Reset </button>
+        @*<input type="submit" value="Submit" class="btn btn-primary">
+        <input type="reset" value="Reset" class="btn btn-default">*@
+    </div>
+}
+
