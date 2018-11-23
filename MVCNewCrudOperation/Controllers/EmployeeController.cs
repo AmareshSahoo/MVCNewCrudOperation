@@ -34,7 +34,8 @@ namespace MVCNewCrudOperation.Controllers
             {
                 using (DbModel db= new DbModel())
                 {
-                    return View(db.Employees.Where(x=>x.EmployeeID==id).FirstOrDefault<Employee>());
+                    var emp = db.Employees.Where(x => x.EmployeeID == id).FirstOrDefault<Employee>();
+                    return View(emp);
                 }
             }
         }
